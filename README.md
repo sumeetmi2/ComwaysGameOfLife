@@ -26,6 +26,5 @@ Future improvements
 - Improve algo
 - Improve UI
 - Add capability of custom pattern input
-- 
 
 
