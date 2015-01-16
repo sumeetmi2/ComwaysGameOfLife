@@ -1,4 +1,4 @@
-# ComwaysGameOfLife
+# Comway's Game Of Life in JAVA
 
 An attempt to model the comway's game of life.
 
