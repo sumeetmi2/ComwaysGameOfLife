@@ -1,30 +1,52 @@
-# Comway's Game Of Life in JAVA
+# Conway's Game of Life in Java
 
-An attempt to model the comway's game of life.
+A Swing implementation of Conway's Game of Life on a 30×30 grid.
 
 The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves or, for advanced players, by creating patterns with particular properties.
 
-Rules of the game:
--  Any live cell with fewer than two live neighbours dies, as if caused by under-population.
--  Any live cell with two or three live neighbours lives on to the next generation.
--  Any live cell with more than three live neighbours dies, as if by overcrowding. 
--  Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+![Glider](docs/screenshots/glider.png)
 
-How to run ?
-- Compile the code and export as run time executable jar
-- Run java -jar <jarname>.jar in cmd prompt
-- Enter the generation count you want
-- Select one of the patterns
-  * 0: 10 Cell Input
-  * 1: Glider
-  * 2: Exploder
-  * 3: Blinker
-  * 4: Lightweight Spaceship
+## Rules
 
+- Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+- Any live cell with two or three live neighbours lives on to the next generation.
+- Any live cell with more than three live neighbours dies, as if by overcrowding.
+- Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-Future improvements
-- Improve algo
-- Improve UI
-- Add capability of custom pattern input
+The grid has fixed edges: cells beyond the border count as dead, and patterns do not wrap around.
 
+## How to run
 
+Requires JDK 8 or newer.
+
+```
+javac -d out src/*.java
+java -cp out GameOfLife
+```
+
+## Using the app
+
+- **Pattern picker**: load a preset (10 Cell Input, Glider, Exploder, Blinker, Lightweight Spaceship).
+- **Play / Pause**: run the simulation continuously.
+- **Step**: pause and advance a single generation.
+- **Reset**: reload the selected pattern.
+- **Clear**: empty the grid.
+- **Click a cell** to toggle it, so you can draw your own patterns.
+- **Generations/sec** slider: set the speed from 1 to 30 generations per second.
+
+The current generation is shown in the status bar at the bottom.
+
+## Screenshots
+
+| Exploder | Lightweight Spaceship |
+|---|---|
+| ![Exploder](docs/screenshots/exploder.png) | ![Lightweight Spaceship](docs/screenshots/spaceship.png) |
+
+## Code layout
+
+| File | Responsibility |
+|---|---|
+| `src/GameOfLife.java` | Entry point, window and controls |
+| `src/Life.java` | Simulation: grid state and generation step, no UI |
+| `src/LifePanel.java` | Draws the grid and maps clicks to cells |
+| `src/Pattern.java` | Preset starting patterns |
